@@ -1,68 +1,53 @@
-﻿var counter0 = 0;
-var counter1 = 0;
-var counter2 = 0;
-var counter3 = 0;
-var counter4 = 0;
-var counter5 = 0;
-var counter6 = 0;
-var counter7 = 0;
-var counter8 = 0;
-var counter9 = 0;
+﻿
+using ChallangeApp;
 
-var number = 4566;
-string numberIsString = number.ToString();
-char[] latters = numberIsString.ToArray();
+Employee employee1 = new Employee("Jan", "Kowalski", 39);
+Employee employee2 = new Employee("Mikołaj", "Kopernik");
+Employee employee3 = new Employee("Robert", "Lewandowski", 35);
 
-foreach (char letter in latters)
+employee1.AddScore(2);
+employee1.AddScore(4);
+employee1.AddScore(7);
+employee1.AddScore(3);
+employee1.AddScore(9);
+//var ratingEmployee1 = employee1.Rating;
+
+employee2.AddScore(8);
+employee2.AddScore(2);
+employee2.AddScore(6);
+employee2.AddScore(6);
+employee2.AddScore(9);
+//var ratingEmployee2 = employee2.Rating;
+
+employee3.AddScore(2);
+employee3.AddScore(4);
+employee3.AddScore(5);
+employee3.AddScore(1);
+employee3.AddScore(9);
+//var ratingEmployee3 = employee3.Rating;
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
+    employee1, employee2, employee3
+};
+
+foreach (Employee employee in employees)
+{
+    Console.WriteLine("Pracownik: " + employee.Name + " " + employee.Surname + " lat " + employee.Age + " zdobył " + employee.Rating);
+}
+
+int maxRating = -1;
+Employee employeeWithMaxRating = new Employee();
+
+foreach
+    (Employee employee in employees)
+{
+    if (employee.Rating > maxRating)
     {
-        counter0++;
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
+        employeeWithMaxRating = employee;
+        maxRating = employee.Rating;
     }
 }
-Console.WriteLine("0=> " + counter0);
-Console.WriteLine("1=> " + counter1);
-Console.WriteLine("2=> " + counter2);
-Console.WriteLine("3=> " + counter3);
-Console.WriteLine("4=> " + counter4);
-Console.WriteLine("5=> " + counter5);
-Console.WriteLine("6=> " + counter6);
-Console.WriteLine("7=> " + counter7);
-Console.WriteLine("8=> " + counter8);
-Console.WriteLine("9=> " + counter9);
+
+Console.WriteLine("Pracownik z najwyższą oceną to: " + employeeWithMaxRating.Name + ". Zdobył " + maxRating + " punktów! Gratulujemy!");
+
