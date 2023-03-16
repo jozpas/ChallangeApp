@@ -3,9 +3,9 @@ namespace ChallangeApp
 {
     public class Employee
     {
-        string name;
-        string surname;
-        int age;
+        //string name;
+        //string surname;
+        //int age;
         List<int> score = new List<int>();
 
         public Employee(string name, string surname, int age)
@@ -38,6 +38,7 @@ namespace ChallangeApp
         public void AddScore(int number)
         {
             this.score.Add(number);
+            
         }
     }
 }
