@@ -20,10 +20,17 @@ namespace ChallangeApp
             this.Surname = surname;
             this.Age = 0;
         }
+        public Employee(string name)
+        {
+            this.Name = name;
+            this.Surname = "null";
+        }
+
         public Employee()
         {
-
+            
         }
+
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
@@ -38,7 +45,7 @@ namespace ChallangeApp
         public void AddScore(int number)
         {
             this.score.Add(number);
-            
+
         }
     }
 }
