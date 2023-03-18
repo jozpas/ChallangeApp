@@ -4,20 +4,65 @@ namespace ChallangeApp.Tests
     {
 
         [Test]
-        public void WhenEmployeeSetsPoints_ShouldReturnRating()
+        public void CheckMaxGradeFromAllGrades()
         {
             // arrange
             var employee = new Employee("Jan", "Kowalski");
-            employee.AddScore(5);
-            employee.AddScore(6);
-            employee.AddScore(4);
-            employee.AddScore(-15);
+            employee.AddGrades(5.5f);
+            employee.AddGrades(6.74f);
+            employee.AddGrades(4.01f);
 
             // act
-            var rating = employee.Rating;
+            var max = employee.GetStatistics().Max;
 
             // assert
-            Assert.AreEqual(0, rating);
+            Assert.AreEqual(6.74f, max);
+
+        }
+
+        [Test]
+        public void CheckMinGradeFromAllGrades()
+        {
+            // arrange
+            var employee = new Employee("Jan", "Kowalski");
+            employee.AddGrades(5.5f);
+            employee.AddGrades(6.74f);
+            employee.AddGrades(4.01f);
+
+            // act
+            var min = employee.GetStatistics().Min;
+
+            // assert
+            Assert.AreEqual(4.01f, min);
+
+        }
+        [Test]
+        public void CheckAvargeGradeFromAllGrades()
+        {
+            // arrange
+            var employee = new Employee("Jan", "Kowalski");
+            employee.AddGrades(5.5f);
+            employee.AddGrades(6);
+            employee.AddGrades(5);
+
+            // act
+            var avg = employee.GetStatistics().Average;
+
+            // assert
+            Assert.AreEqual(5.5f, avg);
+
+        }
+        [Test]
+        public void CheckTwoEmployeesAreDiffrent()
+        {
+            // arrange
+            var employee1 = new Employee("Jan", "Kowalski");
+            var employee2 = new Employee("Janek", "Kowalewski");
+
+            // act
+
+            // assert
+            Assert.AreNotEqual(employee1, employee2);
 
         }
     }
