@@ -13,9 +13,47 @@ namespace ChallangeApp
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
+
+
+        //3.33
+        //3
+        //int valueInInt = (int)grade;//to odina to co jest po przecinku !NIE ZAOKRĄGLA!//
+        // int valueInInt = Math.Ceiling(grade); // zokrągla do góry
+        //int valueInInt = Math.Floor(grade); // zokrągla w dół
+
+
         public void AddGrades(float grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine($"value: {grade} is invalid");
+            }
+        }
+
+        public void AddGrades(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrades(result);
+            }
+            else
+            {
+                Console.WriteLine($"string: {grade} is not float");
+            }
+        }
+
+        public void AddGrades(double grade)
+        {
+            grade = Math.Round(grade, 2);
+            this.AddGrades((float)grade);
+        }
+        public void AddGrades(long grade)
+        {
+            this.AddGrades(grade);
         }
 
         public Statistics GetStatistics()

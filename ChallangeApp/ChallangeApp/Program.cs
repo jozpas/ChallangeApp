@@ -1,9 +1,12 @@
 ﻿using ChallangeApp;
 
 var employee = new Employee("Jan", "Kowalski");
-employee.AddGrades(2);
+employee.AddGrades("1000");
+employee.AddGrades("Jan");
 employee.AddGrades(1.5f);
 employee.AddGrades(7.5f);
+employee.AddGrades(7.56668d);
+employee.AddGrades(756);
 
 var statistics = employee.GetStatistics();
 
