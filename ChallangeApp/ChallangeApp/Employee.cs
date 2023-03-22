@@ -13,15 +13,6 @@ namespace ChallangeApp
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
-
-
-        //3.33
-        //3
-        //int valueInInt = (int)grade;//to odina to co jest po przecinku !NIE ZAOKRĄGLA!//
-        // int valueInInt = Math.Ceiling(grade); // zokrągla do góry
-        //int valueInInt = Math.Floor(grade); // zokrągla w dół
-
-
         public void AddGrades(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -51,12 +42,12 @@ namespace ChallangeApp
             grade = Math.Round(grade, 2);
             this.AddGrades((float)grade);
         }
-        public void AddGrades(long grade)
+        public void AddGrades(int grade)
         {
-            this.AddGrades(grade);
+            this.AddGrades((float)grade);
         }
 
-        public Statistics GetStatistics()
+        public Statistics GetStatisticsWithForeach()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -83,6 +74,59 @@ namespace ChallangeApp
                 statistics.Average = 0;
             }
             return statistics;
+        }
+
+        public Statistics GetStatisticWithFor()
+        {
+            var statistics1 = new Statistics();
+            statistics1.Average = 0;
+            statistics1.Max = float.MinValue;
+            statistics1.Min = float.MaxValue;
+
+            for (int i = 0; i < this.grades.Count; i++)
+            {
+                statistics1.Max = Math.Max(statistics1.Max, this.grades[i]);
+                statistics1.Min = Math.Min(statistics1.Min, this.grades[i]);
+                statistics1.Average += this.grades[i];
+            }
+            statistics1.Average /= this.grades.Count;
+            return statistics1;
+        }
+        public Statistics GetStatisticWithDoWhile()
+        {
+            var index = 0;
+            var statistics2 = new Statistics();
+            statistics2.Average = 0;
+            statistics2.Min = float.MaxValue;
+            statistics2.Max = float.MinValue;
+
+            do
+            {
+                statistics2.Max = Math.Max(statistics2.Max, this.grades[index]);
+                statistics2.Min = Math.Min(statistics2.Min, this.grades[index]);
+                statistics2.Average += this.grades[index];
+                index++;
+            } while (index < this.grades.Count);
+            statistics2.Average /= this.grades.Count;
+            return statistics2;
+        }
+        public Statistics GetStatisticWithWhile()
+        {
+            var index = 0;
+            var statistics3 = new Statistics();
+            statistics3.Average = 0;
+            statistics3.Max = float.MinValue;
+            statistics3.Min = float.MaxValue;   
+            
+            while( index < this.grades.Count)
+            {
+                statistics3.Max = Math.Max(statistics3.Max, this.grades[index]);
+                statistics3.Min = Math.Min(statistics3.Min, this.grades[index]);
+                statistics3.Average += this.grades[index];
+                index++;
+            }
+            statistics3.Average /= this.grades.Count;
+            return statistics3;
         }
 
     }
