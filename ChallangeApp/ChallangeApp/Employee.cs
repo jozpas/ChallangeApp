@@ -6,6 +6,7 @@ namespace ChallangeApp
 {
     public class Employee
     {
+        //private const char sex = 'M';
         private List<float> grades = new List<float>();
         public Employee(string name, string surname)
         {
@@ -18,7 +19,6 @@ namespace ChallangeApp
 
         public Employee()
         {
-            
         }
 
         public void AddGrades(float grade)
@@ -29,7 +29,7 @@ namespace ChallangeApp
             }
             else
             {
-                Console.WriteLine($"value: {grade} is invalid");
+                throw new Exception("value is valid");
             }
         }
         public void AddGrades(char grade)
@@ -55,9 +55,7 @@ namespace ChallangeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong char");
-                    //this.grades.Add(0);
-                    break;
+                    throw new Exception("Wrong letter");
             }
         }
 
@@ -69,7 +67,7 @@ namespace ChallangeApp
             }
             else
             {
-                Console.WriteLine($"string: {grade} is not float");
+                throw new Exception("String is not float");
             }
         }
 
@@ -99,7 +97,6 @@ namespace ChallangeApp
                     statistics.Min = Math.Min(statistics.Min, grade);
                     statistics.Average += grade;
                 }
-                // statistics.Average = statistics.Average / this.grades.Count;
                 statistics.Average /= this.grades.Count;
 
             }
@@ -128,7 +125,6 @@ namespace ChallangeApp
                     statistics.AverageLetter = 'E';
                     break;
             }
-
             return statistics;
         }
     }

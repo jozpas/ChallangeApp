@@ -11,6 +11,20 @@ Console.WriteLine();
 var employee = new Employee();
 var i = 0;
 
+//try
+//{
+//    Employee emp = null;
+//    var name = emp.Name;
+//}
+//catch (Exception e)
+//{
+//    Console.WriteLine(e.Message);
+//}
+//finally
+//{
+//    Console.WriteLine("Finnaly here");
+//}
+
 while (true)
 {
     if (i == 0)
@@ -26,7 +40,14 @@ while (true)
     {
         break;
     }
-    employee.AddGrades(input);
+    try
+    {
+        employee.AddGrades(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catch: {e.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
