@@ -7,23 +7,9 @@ Console.WriteLine("==========================================");
 Console.WriteLine();
 Console.WriteLine();
 
-
-var employee = new Employee();
+//(name, surname, sex, age)
+var employee = new Employee("Jan", "Kowalski", "mężczyzna", 44);
 var i = 0;
-
-//try
-//{
-//    Employee emp = null;
-//    var name = emp.Name;
-//}
-//catch (Exception e)
-//{
-//    Console.WriteLine(e.Message);
-//}
-//finally
-//{
-//    Console.WriteLine("Finnaly here");
-//}
 
 while (true)
 {
@@ -31,7 +17,14 @@ while (true)
     {
         Console.WriteLine("Podaj ocene pracownika: ");
         var input1 = Console.ReadLine();
-        employee.AddGrades(input1);
+        try
+        {
+            employee.AddGrades(input1);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Exception catch: {e.Message}");
+        }
         i++;
     }
     Console.WriteLine("Podaj kolejną ocene pracownika lub wpiszę 'Q', żeby zakończyć dodawanie.");
@@ -56,5 +49,6 @@ Console.WriteLine($"Avarnge: {statistics.Average:N2}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
+
 
 

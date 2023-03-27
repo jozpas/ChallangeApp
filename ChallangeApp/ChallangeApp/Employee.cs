@@ -4,20 +4,17 @@ using System.Net.Http.Headers;
 
 namespace ChallangeApp
 {
-    public class Employee
+    public class Employee : Person
     {
-        //private const char sex = 'M';
         private List<float> grades = new List<float>();
+
+        public Employee() { }
         public Employee(string name, string surname)
+          : this(name, surname, "nie podano", 00)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
-
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
-        public Employee()
+        public Employee(string name, string surname, string sex, int age)
+            : base(name, surname, sex, age)
         {
         }
 
@@ -34,24 +31,26 @@ namespace ChallangeApp
         }
         public void AddGrades(char grade)
         {
-
             switch (grade)
             {
                 case 'A':
                 case 'a':
                     this.grades.Add(100);
-                    break; ;
+                    break;
                 case 'B':
                 case 'b':
                     this.grades.Add(80);
                     break;
                 case 'C':
+                case 'c':
                     this.grades.Add(60);
                     break;
                 case 'D':
+                case 'd':
                     this.grades.Add(40);
                     break;
                 case 'E':
+                case 'e':
                     this.grades.Add(20);
                     break;
                 default:
