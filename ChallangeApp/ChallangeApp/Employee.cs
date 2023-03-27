@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
@@ -31,26 +32,24 @@ namespace ChallangeApp
         }
         public void AddGrades(char grade)
         {
+
             switch (grade)
             {
                 case 'A':
                 case 'a':
                     this.grades.Add(100);
-                    break;
+                    break; ;
                 case 'B':
                 case 'b':
                     this.grades.Add(80);
                     break;
                 case 'C':
-                case 'c':
                     this.grades.Add(60);
                     break;
                 case 'D':
-                case 'd':
                     this.grades.Add(40);
                     break;
                 case 'E':
-                case 'e':
                     this.grades.Add(20);
                     break;
                 default:

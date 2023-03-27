@@ -7,6 +7,7 @@ Console.WriteLine("==========================================");
 Console.WriteLine();
 Console.WriteLine();
 
+
 //(name, surname, sex, age)
 var employee = new Employee("Jan", "Kowalski", "mężczyzna", 44);
 var i = 0;
@@ -49,6 +50,5 @@ Console.WriteLine($"Avarnge: {statistics.Average:N2}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
-
 
 
