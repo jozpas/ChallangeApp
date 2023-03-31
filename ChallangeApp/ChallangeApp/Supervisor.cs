@@ -1,16 +1,12 @@
 ﻿
-using System;
-using System.ComponentModel;
-using System.Net.Http.Headers;
-
 namespace ChallangeApp
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee() { }
-        public Employee(string name, string surname)
+        public Supervisor() { }
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
@@ -18,65 +14,82 @@ namespace ChallangeApp
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
-
         public void AddGrades(float grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                this.grades.Add(grade);
-            }
-            else
-            {
-                throw new Exception("value is valid");
-            }
-        }
-        public void AddGrades(char grade)
-        {
-
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.grades.Add(100);
-                    break; ;
-                case 'B':
-                case 'b':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Wrong letter");
-            }
-        }
-
-        public void AddGrades(string grade)
-        {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrades(result);
-            }
-            else
-            {
-                throw new Exception("String is not float");
-            }
+            throw new NotImplementedException();
         }
 
         public void AddGrades(double grade)
         {
-            grade = Math.Round(grade, 2);
-            this.AddGrades((float)grade);
+            throw new NotImplementedException();
         }
+
         public void AddGrades(int grade)
         {
-            this.AddGrades((float)grade);
+            throw new NotImplementedException();
+        }
+
+        public void AddGrades(char grade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddGrades(string grade)
+        {
+            switch (grade)
+            {
+                case "6":
+                    this.grades.Add(100);
+                    break;
+                case var a when (a == "-6" || a == "6-"):
+                    this.grades.Add(95);
+                    break;
+
+                case "5":
+                    this.grades.Add(80);
+                    break;
+                case var a when (a == "+5" || a == "5+"):
+                    this.grades.Add(85);
+                    break;
+                case var a when (a == "-5" || a == "5-"):
+                    this.grades.Add(75);
+                    break;
+
+                case "4":
+                    this.grades.Add(60);
+                    break;
+                case var a when (a == "+4" || a == "4+"):
+                    this.grades.Add(65);
+                    break;
+                case var a when (a == "-4" || a == "4-"):
+                    this.grades.Add(55);
+                    break;
+
+                case "3":
+                    this.grades.Add(40);
+                    break;
+                case var a when (a == "+3" || a == "3+"):
+                    this.grades.Add(45);
+                    break;
+                case var a when (a == "-3" || a == "3-"):
+                    this.grades.Add(35);
+                    break;
+
+                case "2":
+                    this.grades.Add(20);
+                    break;
+                case var a when (a == "+2" || a == "2+"):
+                    this.grades.Add(25);
+                    break;
+                case var a when (a == "-2" || a == "2-"):
+                    this.grades.Add(15);
+                    break;
+
+                case "1":
+                    this.grades.Add(0);
+                    break;
+
+            }
         }
 
         public Statistics GetStatistics()

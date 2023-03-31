@@ -9,7 +9,7 @@ Console.WriteLine();
 
 
 //(name, surname, sex, age)
-var employee = new Employee("Jan", "Kowalski", "mężczyzna", 44);
+var employee = new Supervisor("Jan", "Kowalski");
 var i = 0;
 
 while (true)

@@ -4,7 +4,7 @@ namespace ChallangeApp
 {
     public class Person
     {
-        public Person() { }
+        //public Person() { }
         public Person(string name, string surname, string sex, int age)
         {
             this.Name = name;
