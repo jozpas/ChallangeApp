@@ -8,8 +8,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 
-//(name, surname, sex, age)
-var employee = new Supervisor("Jan", "Kowalski");
+var employee = new EmployeeInFile("Jan", "Kowalski");
 var i = 0;
 
 while (true)

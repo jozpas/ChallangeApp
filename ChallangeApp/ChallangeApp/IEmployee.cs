@@ -12,7 +12,6 @@ namespace ChallangeApp
         void AddGrades(char grade);
         void AddGrades(string grade);
 
-
         Statistics GetStatistics();
     }
 }
