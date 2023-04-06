@@ -7,24 +7,25 @@ namespace ChallangeApp
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddDelagate GradeAdded;
+        
         private List<float> grades = new List<float>();
-
 
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
 
         public override void AddGrades(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -43,25 +44,28 @@ namespace ChallangeApp
         }
         public override void AddGrades(char grade)
         {
-
+            
             switch (grade)
             {
                 case 'A':
                 case 'a':
-                    this.grades.Add(100);
+                    this.AddGrades(100);
                     break; ;
                 case 'B':
                 case 'b':
-                    this.grades.Add(80);
+                    this.AddGrades(80);
                     break;
                 case 'C':
-                    this.grades.Add(60);
+                case 'c':
+                    this.AddGrades(60);
                     break;
                 case 'D':
-                    this.grades.Add(40);
+                case 'd':
+                    this.AddGrades(40);
                     break;
                 case 'E':
-                    this.grades.Add(20);
+                case 'e':
+                    this.AddGrades(20);
                     break;
                 default:
                     throw new Exception("Wrong letter");
@@ -73,6 +77,10 @@ namespace ChallangeApp
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrades(result);
+            }
+            else if(char.TryParse(grade, out char charToString))
+            {
+                this.AddGrades(charToString);
             }
             else
             {

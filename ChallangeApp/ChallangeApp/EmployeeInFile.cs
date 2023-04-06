@@ -5,6 +5,7 @@ namespace ChallangeApp
     {
         private const string fileName = "grades.txt";
 
+        public override event GradeAddDelagate GradeAdded;
 
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
@@ -19,6 +20,10 @@ namespace ChallangeApp
                 {
                     writer.WriteLine(grade);
                 }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }   
             }
             else
             {
@@ -85,6 +90,10 @@ namespace ChallangeApp
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrades(result);
+            }
+            else if(char.TryParse(grade, out char charToString))
+            {
+                this.AddGrades(charToString);
             }
             else
             {

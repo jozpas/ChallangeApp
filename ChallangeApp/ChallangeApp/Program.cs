@@ -8,9 +8,16 @@ Console.WriteLine();
 Console.WriteLine();
 
 
-var employee = new EmployeeInFile("Jan", "Kowalski");
-var i = 0;
+var employee = new EmployeeInMemory("Jan", "Kowalski");
+employee.GradeAdded += EmoployeeGradeAdded;
 
+void EmoployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę.");
+}
+
+
+var i = 0;
 while (true)
 {
     if (i == 0)
