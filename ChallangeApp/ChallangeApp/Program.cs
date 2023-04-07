@@ -8,7 +8,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 
-var employee = new EmployeeInMemory("Jan", "Kowalski");
+var employee = new EmployeeInFile("Jan", "Kowalski");
 employee.GradeAdded += EmoployeeGradeAdded;
 
 void EmoployeeGradeAdded(object sender, EventArgs args)

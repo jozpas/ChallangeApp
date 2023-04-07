@@ -3,18 +3,20 @@
     public abstract class EmployeeBase : IEmployee
     {
 
-        public delegate void GradeAddDelagate(object sender, EventArgs args);
+        public delegate void GradeAddedDelagate(object sender, EventArgs args);
 
-        public abstract event GradeAddDelagate GradeAdded;
+        public abstract event GradeAddedDelagate GradeAdded;
+
         public EmployeeBase(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
         }
+               
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
-
+       
         public abstract void AddGrades(float grade);
 
         public abstract void AddGrades(double grade);
